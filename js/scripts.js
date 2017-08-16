@@ -5,31 +5,30 @@ $(document).ready(function() {
     var sentence2 = sentence.split(" ");
     var translatedSentence=[];
 
-    for (index = 0; index < sentence2.length; index +=1)   {
+    for (index = 0; index < sentence2.length; index +=1) {
       word=sentence2[index];
       var brokenWord =word.split("");
       letter=brokenWord[0];
-      letter=letter.toString();
-
+        //insert if here to make sure its a letter//
+        //the if below identifies its not a vowel//
         if (sentence.search(/\u0020[^a-zA-Z]+/) === -1) {
-            if (letter != 'A' && letter !='E' && letter !='I' && letter !='O' && letter !='U') {
+          if (letter==="Q"){
+            newLetter="QUAY";
+            bw=brokenWord.splice(2,3);
+            brokenWord=bw;
+          }
+            else if (letter != 'A' && letter !='E' && letter !='I' && letter !='O' && letter !='U') {
             letter=brokenWord.shift();
             newLetter = letter.concat("AY");
-            var reporting = function() {
-            newWord = brokenWord.concat(newLetter);
-            newWordString=newWord.join("");
-            alert(newWordString);
+            } else {
+            newLetter = "WAY";
           }
-          } else {
-            newLetter = letter.concat("WAY");
-            alert()
-            var reporting = function() {
-            newWord = brokenWord.concat(newLetter);
-            newWordString=newWord.join("");
-            alert(newWordString);
-          }
-          }
-
+            // var reporting = function() {
+             newWord = brokenWord.concat(newLetter);
+             newWordString=newWord.join("");
+             $("#results").append("<p>" + newWordString + "</p>");
+    //  document.getElementById('form1').className += 'hidden';
+          // }
 };
 };
 });
