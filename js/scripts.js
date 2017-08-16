@@ -8,21 +8,34 @@ $(document).ready(function() {
     for (index = 0; index < sentence2.length; index +=1)   {
       word=sentence2[index];
       var brokenWord =word.split("");
-      letter=brokenWord.shift();
+      letter=brokenWord[0];
+      letter=letter.toString();
 
+        if (sentence.search(/\u0020[^a-zA-Z]+/) === -1) {
+            if (letter != 'A' && letter !='E' && letter !='I' && letter !='O' && letter !='U') {
+            letter=brokenWord.shift();
+            newLetter = letter.concat("AY");
+            var reporting = function() {
+            newWord = brokenWord.concat(newLetter);
+            newWordString=newWord.join("");
+            alert(newWordString);
+          }
+          } else {
+            newLetter = letter.concat("WAY");
+            alert()
+            var reporting = function() {
+            newWord = brokenWord.concat(newLetter);
+            newWordString=newWord.join("");
+            alert(newWordString);
+          }
+          }
 
-        //insert if here to make sure its a letter//
-
-        //the if below identifies its not a vowel//
-       if (letter != 'A' && letter !='E' && letter !='I' && letter !='O' && letter !='U') {
-        letter = letter.concat("AY");
-        alert(letter);
-      }
-
-
-    }
-  });
+};
+};
+});
 });
 
 
+
 //we will want join
+///^[a-zA-Z]*$/
